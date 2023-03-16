@@ -21,17 +21,17 @@ pipeline {
         stage('Push image to hub'){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u venkat5658 -p ${dockerhubpwd}'
+                    withCredentials([string(credentialsId: 'jani180348', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u jani180348 -p ${dockerhubpwd}'
                         
                     }
-                    sh 'docker push venkat5658/kubernetes'
+                    sh 'docker push jani180348/kubernetes'
                 }
             }
         }
         stage('run image') {
             steps{          
-                sh 'docker run  -d -t --name kubernetes -p 8081:80 venkat5658/kubernetes:latest'  
+                sh 'docker run  -d -t --name kubernetes -p 8081:80 jani180348/kubernetes:latest'  
                 }
        }
     }    
